@@ -8,6 +8,12 @@ from datetime import datetime
 router = APIRouter()
 
 
+@router.get("/")
+async def health_check():
+    """Health check endpoint"""
+    return {"status": "ok", "service": "TeraBox API", "version": "1.0"}
+
+
 @router.get("/run")
 async def run_endpoint(key: str, url: str):
     db = Database()
