@@ -13,6 +13,7 @@ class Settings(BaseSettings):
     MONGO_DB: str = "terabox_service"
     ADMIN_IDS: List[int] = []
     TERA_BASE_API: str = "https://teraapi.boogafantastic.workers.dev"
+    API_URL: str = "http://localhost:8000"  # Hosting URL for API endpoint
 
     class Config:
         env_file = os.path.join(os.path.dirname(__file__), ".env")

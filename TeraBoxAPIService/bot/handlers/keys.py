@@ -1,6 +1,7 @@
 from pyrogram.types import Message
 from TeraBoxAPIService.bot.utils.database import Database
 from TeraBoxAPIService.bot.utils.validators import is_valid_url, looks_like_terabox
+from TeraBoxAPIService.config import settings
 
 
 async def handle_mykey(client, message: Message):
@@ -10,20 +11,25 @@ async def handle_mykey(client, message: Message):
     if not user or not user.get("api_key"):
         await message.reply_text("You don't have a key yet. Send /start to get a trial key.")
         return
+    api_endpoint = f"{settings.API_URL}/run"
     text = (
         f"API Key: `{user['api_key']}`\n"
         f"Plan: {user.get('plan')}\n"
         f"Expiry: {user.get('expiry')}\n"
-        f"Usage: {user.get('usage_count',0)}/{user.get('max_usage',0)}"
+        f"Usage: {user.get('usage_count',0)}/{user.get('max_usage',0)}\n\n"
+        f"API Endpoint:\n"
+        f"`{api_endpoint}?key={user['api_key']}&url=TERABOX_LINK`"
     )
     await message.reply_text(text)
 
 
 async def handle_help(client, message: Message):
+    api_endpoint = f"{settings.API_URL}/run"
     text = (
         "Usage:\n"
         "1. Get your API key with /start\n"
-        "2. Call the API: `https://myapi.com/run?key=YOUR_KEY&url=TERABOX_LINK`\n"
+        f"2. Call the API:\n"
+        f"`{api_endpoint}?key=YOUR_KEY&url=TERABOX_LINK`\n"
         "3. If you need premium, contact an admin or use /upgrade\n"
     )
     await message.reply_text(text)
