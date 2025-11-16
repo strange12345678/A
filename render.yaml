@@ -24,7 +24,7 @@ services:
       - key: TERA_BASE_API
         scope: run
 
-  - type: web
+  - type: background_worker
     name: terabox-bot
     runtime: docker
     dockerfilePath: ./Dockerfile.bot

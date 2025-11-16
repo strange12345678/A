@@ -9,5 +9,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy entire project
 COPY TeraBoxAPIService/ ./TeraBoxAPIService/
 
-# Bot runs as a service (Pyrogram long polling)
+# Bot runs as a background service
 CMD ["python", "-m", "TeraBoxAPIService.bot.main"]
