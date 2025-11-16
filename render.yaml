@@ -1,0 +1,47 @@
+services:
+  - type: web
+    name: terabox-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    port: 8000
+    autoDeploy: true
+    envVars:
+      - key: BOT_TOKEN
+        scope: run
+      - key: API_ID
+        scope: run
+      - key: API_HASH
+        scope: run
+      - key: MONGO_URI
+        scope: run
+      - key: MONGO_DB
+        scope: run
+      - key: ADMIN_IDS
+        scope: run
+      - key: API_URL
+        scope: run
+      - key: TERA_BASE_API
+        scope: run
+
+  - type: web
+    name: terabox-bot
+    runtime: docker
+    dockerfilePath: ./Dockerfile.bot
+    autoDeploy: true
+    envVars:
+      - key: BOT_TOKEN
+        scope: run
+      - key: API_ID
+        scope: run
+      - key: API_HASH
+        scope: run
+      - key: MONGO_URI
+        scope: run
+      - key: MONGO_DB
+        scope: run
+      - key: ADMIN_IDS
+        scope: run
+      - key: API_URL
+        scope: run
+      - key: TERA_BASE_API
+        scope: run

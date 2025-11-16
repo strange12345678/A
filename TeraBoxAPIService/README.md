@@ -47,14 +47,38 @@ http://localhost:8000/run?key=YOUR_API_KEY&url=TERABOX_LINK
 
 See [DEPLOYMENT.md](./DEPLOYMENT.md) for full hosting setup guides.
 
-## Docker Deployment
+## Deployment
 
-Run everything with Docker Compose:
+### Quick Deploy to Render (Recommended)
+
+1. Push your code to GitHub
+2. Go to [render.com](https://render.com)
+3. Click "Dashboard" → "New +" → "Blueprint"
+4. Connect your GitHub repository
+5. Set environment variables (see [RENDER_DEPLOYMENT.md](../RENDER_DEPLOYMENT.md))
+6. Click "Deploy"
+
+**Full API URL after deployment:**
+```
+https://terabox-api-xxxx.onrender.com/run?key=YOUR_API_KEY&url=TERABOX_LINK
+```
+
+### Other Hosting Options
+
+See [DEPLOYMENT.md](../DEPLOYMENT.md) for guides on:
+- Railway.app
+- Heroku
+- AWS EC2
+- DigitalOcean
+- Self-hosted with Docker
+
+### Local Development with Docker
+
 ```bash
 docker-compose up -d
 ```
 
-This starts MongoDB, API server, and bot automatically.
+Starts MongoDB, API server, and bot locally.
 
 ## Bot Commands
 
